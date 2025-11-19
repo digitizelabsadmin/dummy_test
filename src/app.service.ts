@@ -5,7 +5,7 @@ export class AppService {
   
   private affilUsers: Array<string> = ["2203"]
   
-  private endPlayers: Array<number> = [46, 47];
+  private endPlayers: Array<number> = [156, 157];
 
   private transactionTypes: Array<string> = [
   "Deposit",
@@ -83,8 +83,8 @@ export class AppService {
   }
 
   private generateRandomDate(): string {
-    const start = new Date('2025-01-01');
-    const end = new Date('2025-12-31');
+    const start = new Date('2025-11-01');
+    const end = new Date('2025-11-20');
     const randomTime = start.getTime() + Math.random() * (end.getTime() - start.getTime());
     const randomDate = new Date(randomTime);
     return randomDate.toISOString();
