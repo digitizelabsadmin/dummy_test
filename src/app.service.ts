@@ -56,13 +56,13 @@ export class AppService {
     return transactions;
   }
 
-  async getAggregated(): Promise<Array<{}>> {
+  async getAggregated(startDate: Date, endDate: Date): Promise<Array<{}>> {
   const statistics: Array<{}> = [] // Initialize as empty array
 
   for (let index = 0; index < 2; index++) {
     statistics.push({
       "player_id": this.endPlayers[index],
-      "Date": this.generateRandomDate(),
+      "Date": new Date(startDate),
       "CurrencyCode": "NGN",
       "NGR": this.generateRandomAmount(),
       "GGR": this.generateRandomAmount(),
