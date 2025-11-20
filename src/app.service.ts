@@ -56,26 +56,27 @@ export class AppService {
     return transactions;
   }
 
-  async getAggregated() :Promise<[object]> {
-    let statistics : [object]
+  async getAggregated(): Promise<Array<{}>> {
+  const statistics: Array<{}> = [] // Initialize as empty array
 
-    for (let index = 0; index < 2; index++) {
-      statistics.push({
-        "player_id": this.endPlayers[index],
-        "Date": this.generateRandomDate(),
-        "CurrencyCode": "NGN",
-        "NGR": this.generateRandomAmount(),
-        "GGR": this.generateRandomAmount(),
-        "Bet": this.generateRandomAmount(),
-        "Win": this.generateRandomAmount(),
-        "Deposit": this.generateRandomAmount(),
-        "Withdraw": this.generateRandomAmount(),
-        "BonusAmount": this.generateRandomAmount(),
-        "BonusCancel": this.generateRandomAmount(),
-        "AffId": this.affilUsers[0]
-      })
-      return await statistics
-    }
+  for (let index = 0; index < 2; index++) {
+    statistics.push({
+      "player_id": this.endPlayers[index],
+      "Date": this.generateRandomDate(),
+      "CurrencyCode": "NGN",
+      "NGR": this.generateRandomAmount(),
+      "GGR": this.generateRandomAmount(),
+      "Bet": this.generateRandomAmount(),
+      "Win": this.generateRandomAmount(),
+      "Deposit": this.generateRandomAmount(),
+      "Withdraw": this.generateRandomAmount(),
+      "BonusAmount": this.generateRandomAmount(),
+      "BonusCancel": this.generateRandomAmount(),
+      "AffId": this.affilUsers[0]
+    })
   }
+  
+  return statistics // Return moved outside the loop
+}
 
 }
