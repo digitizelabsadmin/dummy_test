@@ -59,7 +59,7 @@ export class AppService {
   async getAggregated() :Promise<[object]> {
     let statistics : [object]
 
-    for (let index = 0; index < statistics.length; index++) {
+    for (let index = 0; index < 2; index++) {
       statistics.push({
         "player_id": this.endPlayers[index],
         "Date": this.generateRandomDate(),

@@ -10,7 +10,7 @@ export class AppController {
     return await this.appService.getHello();
   }
 
-  @Get('/GetAggregated')
+  @Get('/getAggregated')
   async getAggregated(): Promise<object> {
     return await this.appService.getAggregated();
   }
