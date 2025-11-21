@@ -43,7 +43,7 @@ export class AppService {
     for (let i = 0; i < 20; i++) {
       transactions.push({
         "Player_Id": this.getRandomItem(this.endPlayers),
-        "transaction_id": await this.generateRandomString(10),
+        "transaction_id": Number(Math.ceil(this.generateRandomAmount())),
         "transaction_Date": this.generateRandomDateInRange(startDate, endDate),
         "transaction_type": this.getRandomItem(this.transactionTypes),
         "transaction_amount": this.generateRandomAmount(),
