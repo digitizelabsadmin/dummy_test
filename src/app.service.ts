@@ -26,26 +26,25 @@ export class AppService {
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  private generateRandomDate(): string {
-    const start = new Date('2025-11-01');
-    const end = new Date('2025-11-20');
-    const randomTime = start.getTime() + Math.random() * (end.getTime() - start.getTime());
-    const randomDate = new Date(randomTime);
-    return randomDate.toISOString();
+  private generateRandomDateInRange(startDate: Date, endDate: Date): Date {
+    const start = startDate.getTime()
+    const end = endDate.getTime()
+    const randomTime = start + Math.random() * (end - start)
+    return new Date(randomTime)
   }
 
   private generateRandomAmount(): number {
     return Math.round((Math.random() * 10000 + 100) * 10000) / 10000;
   }
 
-  async getHello(): Promise<object[]> {
+  async getTransactions(startDate, endDate): Promise<object[]> {
     const transactions = [];
     
     for (let i = 0; i < 20; i++) {
       transactions.push({
         "Player_Id": this.getRandomItem(this.endPlayers),
         "transaction_id": await this.generateRandomString(10),
-        "transaction_Date": this.generateRandomDate(),
+        "transaction_Date": this.generateRandomDateInRange(startDate, endDate),
         "transaction_type": this.getRandomItem(this.transactionTypes),
         "transaction_amount": this.generateRandomAmount(),
         "transaction_currency": "NGN",

@@ -1,13 +1,19 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { AppService } from './app.service';
+import { start } from 'repl';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  async getHello(): Promise<object> {
-    return await this.appService.getHello();
+  async getTransactions(
+    @Query('TransactionDateFrom') startDate: string,
+    @Query('TransactionDateTo') endDate: string
+  ): Promise<object> {
+    const stDate = new Date(startDate)
+    const edDate = new Date(endDate)
+    return await this.appService.getTransactions(stDate, edDate);
   }
 
   @Get('/getAggregated')
